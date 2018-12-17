@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bootmybatis.dao.ZmsyCenterMapper" >
+  <resultMap id="BaseResultMap" type="com.bootmybatis.model.ZmsyCenter" >
+    <id column="CENTER_ID" property="centerId" jdbcType="INTEGER" />
+    <result column="CENTERNAME" property="centername" jdbcType="VARCHAR" />
+    <result column="ADDRESS_ID" property="addressId" jdbcType="INTEGER" />
+    <result column="COMPANYNAME" property="companyname" jdbcType="VARCHAR" />
+    <result column="CENTERADDRESS" property="centeraddress" jdbcType="VARCHAR" />
+    <result column="LINKMAN" property="linkman" jdbcType="VARCHAR" />
+    <result column="LINKPHONE" property="linkphone" jdbcType="VARCHAR" />
+    <result column="POSTALCODE" property="postalcode" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="CENTER_ID_PARENT" property="centerIdParent" jdbcType="INTEGER" />
+    <result column="CREATEDATE" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="EXAMINECOUNT" property="examinecount" jdbcType="INTEGER" />
+    <result column="CENTERUSER_ID" property="centeruserId" jdbcType="INTEGER" />
+    <result column="ISFINISHEXAMINE" property="isfinishexamine" jdbcType="INTEGER" />
+    <result column="PLATFORMROLE_ID" property="platformroleId" jdbcType="INTEGER" />
+    <result column="STATUS_ID" property="statusId" jdbcType="INTEGER" />
+    <result column="EXAMINEUSERID" property="examineuserid" jdbcType="INTEGER" />
+    <result column="EXAMINEDATE" property="examinedate" jdbcType="TIMESTAMP" />
+    <result column="ORDERINDEX" property="orderindex" jdbcType="INTEGER" />
+    <result column="CENTERSHORTNAME" property="centershortname" jdbcType="VARCHAR" />
+    <result column="COMPANYNAME_MANAGE" property="companynameManage" jdbcType="VARCHAR" />
+    <result column="CENTERADDRESS_MANAGE" property="centeraddressManage" jdbcType="VARCHAR" />
+    <result column="LINKPHONE_MANAGE" property="linkphoneManage" jdbcType="VARCHAR" />
+    <result column="POSTALCODE_MANAGE" property="postalcodeManage" jdbcType="VARCHAR" />
+    <result column="EMAIL_MANAGE" property="emailManage" jdbcType="VARCHAR" />
+    <result column="WEBURL_MANAGE" property="weburlManage" jdbcType="VARCHAR" />
+    <result column="LINKMAN_MANAGE" property="linkmanManage" jdbcType="VARCHAR" />
+    <result column="LICENSE_MANAGE" property="licenseManage" jdbcType="VARCHAR" />
+    <result column="CENTER_TYPE" property="centerType" jdbcType="INTEGER" />
+    <result column="CENTERINFO" property="centerinfo" jdbcType="VARCHAR" />
+    <result column="OperateORGAN" property="operateorgan" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.bootmybatis.model.ZmsyCenterWithBLOBs" extends="BaseResultMap" >
+    <result column="WEBURL" property="weburl" jdbcType="LONGVARCHAR" />
+    <result column="EXAMINEREMARKS" property="examineremarks" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    CENTER_ID, CENTERNAME, ADDRESS_ID, COMPANYNAME, CENTERADDRESS, LINKMAN, LINKPHONE, 
+    POSTALCODE, EMAIL, CENTER_ID_PARENT, CREATEDATE, EXAMINECOUNT, CENTERUSER_ID, ISFINISHEXAMINE, 
+    PLATFORMROLE_ID, STATUS_ID, EXAMINEUSERID, EXAMINEDATE, ORDERINDEX, CENTERSHORTNAME, 
+    COMPANYNAME_MANAGE, CENTERADDRESS_MANAGE, LINKPHONE_MANAGE, POSTALCODE_MANAGE, EMAIL_MANAGE, 
+    WEBURL_MANAGE, LINKMAN_MANAGE, LICENSE_MANAGE, CENTER_TYPE, CENTERINFO, OperateORGAN
+  </sql>
+  <sql id="Blob_Column_List" >
+    WEBURL, EXAMINEREMARKS
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from zmsy_center
+    where CENTER_ID = #{centerId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from zmsy_center
+    where CENTER_ID = #{centerId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bootmybatis.model.ZmsyCenterWithBLOBs" >
+    insert into zmsy_center (CENTER_ID, CENTERNAME, ADDRESS_ID, 
+      COMPANYNAME, CENTERADDRESS, LINKMAN, 
+      LINKPHONE, POSTALCODE, EMAIL, 
+      CENTER_ID_PARENT, CREATEDATE, EXAMINECOUNT, 
+      CENTERUSER_ID, ISFINISHEXAMINE, PLATFORMROLE_ID, 
+      STATUS_ID, EXAMINEUSERID, EXAMINEDATE, 
+      ORDERINDEX, CENTERSHORTNAME, COMPANYNAME_MANAGE, 
+      CENTERADDRESS_MANAGE, LINKPHONE_MANAGE, POSTALCODE_MANAGE, 
+      EMAIL_MANAGE, WEBURL_MANAGE, LINKMAN_MANAGE, 
+      LICENSE_MANAGE, CENTER_TYPE, CENTERINFO, 
+      OperateORGAN, WEBURL, EXAMINEREMARKS
+      )
+    values (#{centerId,jdbcType=INTEGER}, #{centername,jdbcType=VARCHAR}, #{addressId,jdbcType=INTEGER}, 
+      #{companyname,jdbcType=VARCHAR}, #{centeraddress,jdbcType=VARCHAR}, #{linkman,jdbcType=VARCHAR}, 
+      #{linkphone,jdbcType=VARCHAR}, #{postalcode,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{centerIdParent,jdbcType=INTEGER}, #{createdate,jdbcType=TIMESTAMP}, #{examinecount,jdbcType=INTEGER}, 
+      #{centeruserId,jdbcType=INTEGER}, #{isfinishexamine,jdbcType=INTEGER}, #{platformroleId,jdbcType=INTEGER}, 
+      #{statusId,jdbcType=INTEGER}, #{examineuserid,jdbcType=INTEGER}, #{examinedate,jdbcType=TIMESTAMP}, 
+      #{orderindex,jdbcType=INTEGER}, #{centershortname,jdbcType=VARCHAR}, #{companynameManage,jdbcType=VARCHAR}, 
+      #{centeraddressManage,jdbcType=VARCHAR}, #{linkphoneManage,jdbcType=VARCHAR}, #{postalcodeManage,jdbcType=VARCHAR}, 
+      #{emailManage,jdbcType=VARCHAR}, #{weburlManage,jdbcType=VARCHAR}, #{linkmanManage,jdbcType=VARCHAR}, 
+      #{licenseManage,jdbcType=VARCHAR}, #{centerType,jdbcType=INTEGER}, #{centerinfo,jdbcType=VARCHAR}, 
+      #{operateorgan,jdbcType=VARCHAR}, #{weburl,jdbcType=LONGVARCHAR}, #{examineremarks,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.bootmybatis.model.ZmsyCenterWithBLOBs" >
+    insert into zmsy_center
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="centerId != null" >
+        CENTER_ID,
+      </if>
+      <if test="centername != null" >
+        CENTERNAME,
+      </if>
+      <if test="addressId != null" >
+        ADDRESS_ID,
+      </if>
+      <if test="companyname != null" >
+        COMPANYNAME,
+      </if>
+      <if test="centeraddress != null" >
+        CENTERADDRESS,
+      </if>
+      <if test="linkman != null" >
+        LINKMAN,
+      </if>
+      <if test="linkphone != null" >
+        LINKPHONE,
+      </if>
+      <if test="postalcode != null" >
+        POSTALCODE,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="centerIdParent != null" >
+        CENTER_ID_PARENT,
+      </if>
+      <if test="createdate != null" >
+        CREATEDATE,
+      </if>
+      <if test="examinecount != null" >
+        EXAMINECOUNT,
+      </if>
+      <if test="centeruserId != null" >
+        CENTERUSER_ID,
+      </if>
+      <if test="isfinishexamine != null" >
+        ISFINISHEXAMINE,
+      </if>
+      <if test="platformroleId != null" >
+        PLATFORMROLE_ID,
+      </if>
+      <if test="statusId != null" >
+        STATUS_ID,
+      </if>
+      <if test="examineuserid != null" >
+        EXAMINEUSERID,
+      </if>
+      <if test="examinedate != null" >
+        EXAMINEDATE,
+      </if>
+      <if test="orderindex != null" >
+        ORDERINDEX,
+      </if>
+      <if test="centershortname != null" >
+        CENTERSHORTNAME,
+      </if>
+      <if test="companynameManage != null" >
+        COMPANYNAME_MANAGE,
+      </if>
+      <if test="centeraddressManage != null" >
+        CENTERADDRESS_MANAGE,
+      </if>
+      <if test="linkphoneManage != null" >
+        LINKPHONE_MANAGE,
+      </if>
+      <if test="postalcodeManage != null" >
+        POSTALCODE_MANAGE,
+      </if>
+      <if test="emailManage != null" >
+        EMAIL_MANAGE,
+      </if>
+      <if test="weburlManage != null" >
+        WEBURL_MANAGE,
+      </if>
+      <if test="linkmanManage != null" >
+        LINKMAN_MANAGE,
+      </if>
+      <if test="licenseManage != null" >
+        LICENSE_MANAGE,
+      </if>
+      <if test="centerType != null" >
+        CENTER_TYPE,
+      </if>
+      <if test="centerinfo != null" >
+        CENTERINFO,
+      </if>
+      <if test="operateorgan != null" >
+        OperateORGAN,
+      </if>
+      <if test="weburl != null" >
+        WEBURL,
+      </if>
+      <if test="examineremarks != null" >
+        EXAMINEREMARKS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="centerId != null" >
+        #{centerId,jdbcType=INTEGER},
+      </if>
+      <if test="centername != null" >
+        #{centername,jdbcType=VARCHAR},
+      </if>
+      <if test="addressId != null" >
+        #{addressId,jdbcType=INTEGER},
+      </if>
+      <if test="companyname != null" >
+        #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="centeraddress != null" >
+        #{centeraddress,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null" >
+        #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="linkphone != null" >
+        #{linkphone,jdbcType=VARCHAR},
+      </if>
+      <if test="postalcode != null" >
+        #{postalcode,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="centerIdParent != null" >
+        #{centerIdParent,jdbcType=INTEGER},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="examinecount != null" >
+        #{examinecount,jdbcType=INTEGER},
+      </if>
+      <if test="centeruserId != null" >
+        #{centeruserId,jdbcType=INTEGER},
+      </if>
+      <if test="isfinishexamine != null" >
+        #{isfinishexamine,jdbcType=INTEGER},
+      </if>
+      <if test="platformroleId != null" >
+        #{platformroleId,jdbcType=INTEGER},
+      </if>
+      <if test="statusId != null" >
+        #{statusId,jdbcType=INTEGER},
+      </if>
+      <if test="examineuserid != null" >
+        #{examineuserid,jdbcType=INTEGER},
+      </if>
+      <if test="examinedate != null" >
+        #{examinedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderindex != null" >
+        #{orderindex,jdbcType=INTEGER},
+      </if>
+      <if test="centershortname != null" >
+        #{centershortname,jdbcType=VARCHAR},
+      </if>
+      <if test="companynameManage != null" >
+        #{companynameManage,jdbcType=VARCHAR},
+      </if>
+      <if test="centeraddressManage != null" >
+        #{centeraddressManage,jdbcType=VARCHAR},
+      </if>
+      <if test="linkphoneManage != null" >
+        #{linkphoneManage,jdbcType=VARCHAR},
+      </if>
+      <if test="postalcodeManage != null" >
+        #{postalcodeManage,jdbcType=VARCHAR},
+      </if>
+      <if test="emailManage != null" >
+        #{emailManage,jdbcType=VARCHAR},
+      </if>
+      <if test="weburlManage != null" >
+        #{weburlManage,jdbcType=VARCHAR},
+      </if>
+      <if test="linkmanManage != null" >
+        #{linkmanManage,jdbcType=VARCHAR},
+      </if>
+      <if test="licenseManage != null" >
+        #{licenseManage,jdbcType=VARCHAR},
+      </if>
+      <if test="centerType != null" >
+        #{centerType,jdbcType=INTEGER},
+      </if>
+      <if test="centerinfo != null" >
+        #{centerinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="operateorgan != null" >
+        #{operateorgan,jdbcType=VARCHAR},
+      </if>
+      <if test="weburl != null" >
+        #{weburl,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="examineremarks != null" >
+        #{examineremarks,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bootmybatis.model.ZmsyCenterWithBLOBs" >
+    update zmsy_center
+    <set >
+      <if test="centername != null" >
+        CENTERNAME = #{centername,jdbcType=VARCHAR},
+      </if>
+      <if test="addressId != null" >
+        ADDRESS_ID = #{addressId,jdbcType=INTEGER},
+      </if>
+      <if test="companyname != null" >
+        COMPANYNAME = #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="centeraddress != null" >
+        CENTERADDRESS = #{centeraddress,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null" >
+        LINKMAN = #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="linkphone != null" >
+        LINKPHONE = #{linkphone,jdbcType=VARCHAR},
+      </if>
+      <if test="postalcode != null" >
+        POSTALCODE = #{postalcode,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="centerIdParent != null" >
+        CENTER_ID_PARENT = #{centerIdParent,jdbcType=INTEGER},
+      </if>
+      <if test="createdate != null" >
+        CREATEDATE = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="examinecount != null" >
+        EXAMINECOUNT = #{examinecount,jdbcType=INTEGER},
+      </if>
+      <if test="centeruserId != null" >
+        CENTERUSER_ID = #{centeruserId,jdbcType=INTEGER},
+      </if>
+      <if test="isfinishexamine != null" >
+        ISFINISHEXAMINE = #{isfinishexamine,jdbcType=INTEGER},
+      </if>
+      <if test="platformroleId != null" >
+        PLATFORMROLE_ID = #{platformroleId,jdbcType=INTEGER},
+      </if>
+      <if test="statusId != null" >
+        STATUS_ID = #{statusId,jdbcType=INTEGER},
+      </if>
+      <if test="examineuserid != null" >
+        EXAMINEUSERID = #{examineuserid,jdbcType=INTEGER},
+      </if>
+      <if test="examinedate != null" >
+        EXAMINEDATE = #{examinedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderindex != null" >
+        ORDERINDEX = #{orderindex,jdbcType=INTEGER},
+      </if>
+      <if test="centershortname != null" >
+        CENTERSHORTNAME = #{centershortname,jdbcType=VARCHAR},
+      </if>
+      <if test="companynameManage != null" >
+        COMPANYNAME_MANAGE = #{companynameManage,jdbcType=VARCHAR},
+      </if>
+      <if test="centeraddressManage != null" >
+        CENTERADDRESS_MANAGE = #{centeraddressManage,jdbcType=VARCHAR},
+      </if>
+      <if test="linkphoneManage != null" >
+        LINKPHONE_MANAGE = #{linkphoneManage,jdbcType=VARCHAR},
+      </if>
+      <if test="postalcodeManage != null" >
+        POSTALCODE_MANAGE = #{postalcodeManage,jdbcType=VARCHAR},
+      </if>
+      <if test="emailManage != null" >
+        EMAIL_MANAGE = #{emailManage,jdbcType=VARCHAR},
+      </if>
+      <if test="weburlManage != null" >
+        WEBURL_MANAGE = #{weburlManage,jdbcType=VARCHAR},
+      </if>
+      <if test="linkmanManage != null" >
+        LINKMAN_MANAGE = #{linkmanManage,jdbcType=VARCHAR},
+      </if>
+      <if test="licenseManage != null" >
+        LICENSE_MANAGE = #{licenseManage,jdbcType=VARCHAR},
+      </if>
+      <if test="centerType != null" >
+        CENTER_TYPE = #{centerType,jdbcType=INTEGER},
+      </if>
+      <if test="centerinfo != null" >
+        CENTERINFO = #{centerinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="operateorgan != null" >
+        OperateORGAN = #{operateorgan,jdbcType=VARCHAR},
+      </if>
+      <if test="weburl != null" >
+        WEBURL = #{weburl,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="examineremarks != null" >
+        EXAMINEREMARKS = #{examineremarks,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where CENTER_ID = #{centerId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.bootmybatis.model.ZmsyCenterWithBLOBs" >
+    update zmsy_center
+    set CENTERNAME = #{centername,jdbcType=VARCHAR},
+      ADDRESS_ID = #{addressId,jdbcType=INTEGER},
+      COMPANYNAME = #{companyname,jdbcType=VARCHAR},
+      CENTERADDRESS = #{centeraddress,jdbcType=VARCHAR},
+      LINKMAN = #{linkman,jdbcType=VARCHAR},
+      LINKPHONE = #{linkphone,jdbcType=VARCHAR},
+      POSTALCODE = #{postalcode,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      CENTER_ID_PARENT = #{centerIdParent,jdbcType=INTEGER},
+      CREATEDATE = #{createdate,jdbcType=TIMESTAMP},
+      EXAMINECOUNT = #{examinecount,jdbcType=INTEGER},
+      CENTERUSER_ID = #{centeruserId,jdbcType=INTEGER},
+      ISFINISHEXAMINE = #{isfinishexamine,jdbcType=INTEGER},
+      PLATFORMROLE_ID = #{platformroleId,jdbcType=INTEGER},
+      STATUS_ID = #{statusId,jdbcType=INTEGER},
+      EXAMINEUSERID = #{examineuserid,jdbcType=INTEGER},
+      EXAMINEDATE = #{examinedate,jdbcType=TIMESTAMP},
+      ORDERINDEX = #{orderindex,jdbcType=INTEGER},
+      CENTERSHORTNAME = #{centershortname,jdbcType=VARCHAR},
+      COMPANYNAME_MANAGE = #{companynameManage,jdbcType=VARCHAR},
+      CENTERADDRESS_MANAGE = #{centeraddressManage,jdbcType=VARCHAR},
+      LINKPHONE_MANAGE = #{linkphoneManage,jdbcType=VARCHAR},
+      POSTALCODE_MANAGE = #{postalcodeManage,jdbcType=VARCHAR},
+      EMAIL_MANAGE = #{emailManage,jdbcType=VARCHAR},
+      WEBURL_MANAGE = #{weburlManage,jdbcType=VARCHAR},
+      LINKMAN_MANAGE = #{linkmanManage,jdbcType=VARCHAR},
+      LICENSE_MANAGE = #{licenseManage,jdbcType=VARCHAR},
+      CENTER_TYPE = #{centerType,jdbcType=INTEGER},
+      CENTERINFO = #{centerinfo,jdbcType=VARCHAR},
+      OperateORGAN = #{operateorgan,jdbcType=VARCHAR},
+      WEBURL = #{weburl,jdbcType=LONGVARCHAR},
+      EXAMINEREMARKS = #{examineremarks,jdbcType=LONGVARCHAR}
+    where CENTER_ID = #{centerId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bootmybatis.model.ZmsyCenter" >
+    update zmsy_center
+    set CENTERNAME = #{centername,jdbcType=VARCHAR},
+      ADDRESS_ID = #{addressId,jdbcType=INTEGER},
+      COMPANYNAME = #{companyname,jdbcType=VARCHAR},
+      CENTERADDRESS = #{centeraddress,jdbcType=VARCHAR},
+      LINKMAN = #{linkman,jdbcType=VARCHAR},
+      LINKPHONE = #{linkphone,jdbcType=VARCHAR},
+      POSTALCODE = #{postalcode,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      CENTER_ID_PARENT = #{centerIdParent,jdbcType=INTEGER},
+      CREATEDATE = #{createdate,jdbcType=TIMESTAMP},
+      EXAMINECOUNT = #{examinecount,jdbcType=INTEGER},
+      CENTERUSER_ID = #{centeruserId,jdbcType=INTEGER},
+      ISFINISHEXAMINE = #{isfinishexamine,jdbcType=INTEGER},
+      PLATFORMROLE_ID = #{platformroleId,jdbcType=INTEGER},
+      STATUS_ID = #{statusId,jdbcType=INTEGER},
+      EXAMINEUSERID = #{examineuserid,jdbcType=INTEGER},
+      EXAMINEDATE = #{examinedate,jdbcType=TIMESTAMP},
+      ORDERINDEX = #{orderindex,jdbcType=INTEGER},
+      CENTERSHORTNAME = #{centershortname,jdbcType=VARCHAR},
+      COMPANYNAME_MANAGE = #{companynameManage,jdbcType=VARCHAR},
+      CENTERADDRESS_MANAGE = #{centeraddressManage,jdbcType=VARCHAR},
+      LINKPHONE_MANAGE = #{linkphoneManage,jdbcType=VARCHAR},
+      POSTALCODE_MANAGE = #{postalcodeManage,jdbcType=VARCHAR},
+      EMAIL_MANAGE = #{emailManage,jdbcType=VARCHAR},
+      WEBURL_MANAGE = #{weburlManage,jdbcType=VARCHAR},
+      LINKMAN_MANAGE = #{linkmanManage,jdbcType=VARCHAR},
+      LICENSE_MANAGE = #{licenseManage,jdbcType=VARCHAR},
+      CENTER_TYPE = #{centerType,jdbcType=INTEGER},
+      CENTERINFO = #{centerinfo,jdbcType=VARCHAR},
+      OperateORGAN = #{operateorgan,jdbcType=VARCHAR}
+    where CENTER_ID = #{centerId,jdbcType=INTEGER}
+  </update>
+
+  <select id="findAll" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from zmsy_center
+  </select>
+
+  <select id="selectByParentId" resultType="zmsyCenter">
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from zmsy_center
+    where CENTER_ID_PARENT = #{parentId,jdbcType=INTEGER}
+  </select>
+</mapper>

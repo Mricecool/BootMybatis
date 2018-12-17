@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bootmybatis.dao.ZmsyComplaintMapper" >
+  <resultMap id="BaseResultMap" type="com.bootmybatis.model.ZmsyComplaint" >
+    <id column="ComplaintID" property="complaintid" jdbcType="BIGINT" />
+    <result column="ComplaintDate" property="complaintdate" jdbcType="TIMESTAMP" />
+    <result column="Title" property="title" jdbcType="VARCHAR" />
+    <result column="Content" property="content" jdbcType="VARCHAR" />
+    <result column="AddFile" property="addfile" jdbcType="VARCHAR" />
+    <result column="Name" property="name" jdbcType="VARCHAR" />
+    <result column="Tel" property="tel" jdbcType="VARCHAR" />
+    <result column="eMail" property="email" jdbcType="VARCHAR" />
+    <result column="ComplaintType" property="complainttype" jdbcType="INTEGER" />
+    <result column="Status" property="status" jdbcType="INTEGER" />
+    <result column="AdminUserID" property="adminuserid" jdbcType="BIGINT" />
+    <result column="OpDate" property="opdate" jdbcType="TIMESTAMP" />
+    <result column="OpDesc" property="opdesc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ComplaintID, ComplaintDate, Title, Content, AddFile, Name, Tel, eMail, ComplaintType, 
+    Status, AdminUserID, OpDate, OpDesc
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from zmsy_complaint
+    where ComplaintID = #{complaintid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from zmsy_complaint
+    where ComplaintID = #{complaintid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.bootmybatis.model.ZmsyComplaint" >
+    insert into zmsy_complaint (ComplaintID, ComplaintDate, Title, 
+      Content, AddFile, Name, 
+      Tel, eMail, ComplaintType, 
+      Status, AdminUserID, OpDate, 
+      OpDesc)
+    values (#{complaintid,jdbcType=BIGINT}, #{complaintdate,jdbcType=TIMESTAMP}, #{title,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{addfile,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{tel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{complainttype,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{adminuserid,jdbcType=BIGINT}, #{opdate,jdbcType=TIMESTAMP}, 
+      #{opdesc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bootmybatis.model.ZmsyComplaint" >
+    insert into zmsy_complaint
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="complaintid != null" >
+        ComplaintID,
+      </if>
+      <if test="complaintdate != null" >
+        ComplaintDate,
+      </if>
+      <if test="title != null" >
+        Title,
+      </if>
+      <if test="content != null" >
+        Content,
+      </if>
+      <if test="addfile != null" >
+        AddFile,
+      </if>
+      <if test="name != null" >
+        Name,
+      </if>
+      <if test="tel != null" >
+        Tel,
+      </if>
+      <if test="email != null" >
+        eMail,
+      </if>
+      <if test="complainttype != null" >
+        ComplaintType,
+      </if>
+      <if test="status != null" >
+        Status,
+      </if>
+      <if test="adminuserid != null" >
+        AdminUserID,
+      </if>
+      <if test="opdate != null" >
+        OpDate,
+      </if>
+      <if test="opdesc != null" >
+        OpDesc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="complaintid != null" >
+        #{complaintid,jdbcType=BIGINT},
+      </if>
+      <if test="complaintdate != null" >
+        #{complaintdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="addfile != null" >
+        #{addfile,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="complainttype != null" >
+        #{complainttype,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="adminuserid != null" >
+        #{adminuserid,jdbcType=BIGINT},
+      </if>
+      <if test="opdate != null" >
+        #{opdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="opdesc != null" >
+        #{opdesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bootmybatis.model.ZmsyComplaint" >
+    update zmsy_complaint
+    <set >
+      <if test="complaintdate != null" >
+        ComplaintDate = #{complaintdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="title != null" >
+        Title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        Content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="addfile != null" >
+        AddFile = #{addfile,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        Name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        Tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        eMail = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="complainttype != null" >
+        ComplaintType = #{complainttype,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        Status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="adminuserid != null" >
+        AdminUserID = #{adminuserid,jdbcType=BIGINT},
+      </if>
+      <if test="opdate != null" >
+        OpDate = #{opdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="opdesc != null" >
+        OpDesc = #{opdesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ComplaintID = #{complaintid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bootmybatis.model.ZmsyComplaint" >
+    update zmsy_complaint
+    set ComplaintDate = #{complaintdate,jdbcType=TIMESTAMP},
+      Title = #{title,jdbcType=VARCHAR},
+      Content = #{content,jdbcType=VARCHAR},
+      AddFile = #{addfile,jdbcType=VARCHAR},
+      Name = #{name,jdbcType=VARCHAR},
+      Tel = #{tel,jdbcType=VARCHAR},
+      eMail = #{email,jdbcType=VARCHAR},
+      ComplaintType = #{complainttype,jdbcType=INTEGER},
+      Status = #{status,jdbcType=INTEGER},
+      AdminUserID = #{adminuserid,jdbcType=BIGINT},
+      OpDate = #{opdate,jdbcType=TIMESTAMP},
+      OpDesc = #{opdesc,jdbcType=VARCHAR}
+    where ComplaintID = #{complaintid,jdbcType=BIGINT}
+  </update>
+</mapper>
