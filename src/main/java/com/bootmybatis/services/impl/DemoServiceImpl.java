@@ -2,6 +2,7 @@ package com.bootmybatis.services.impl;
 
 import com.bootmybatis.dao.ZmsyComplaintMapper;
 import com.bootmybatis.model.ZmsyComplaint;
+import com.bootmybatis.model.ZmsyComplaintWithBLOBs;
 import com.bootmybatis.services.DemoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ public class DemoServiceImpl implements DemoService {
 
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public int addInfo(ZmsyComplaint zmsyComplaint) throws IOException{
+    public int addInfo(ZmsyComplaintWithBLOBs zmsyComplaint) throws IOException{
         int res = zmsyComplaintMapper.insert(zmsyComplaint);
         throw new IOException();
         //return res;
@@ -28,7 +29,7 @@ public class DemoServiceImpl implements DemoService {
 
     @Transactional
     @Override
-    public int addInfoNormal(ZmsyComplaint zmsyComplaint) {
+    public int addInfoNormal(ZmsyComplaintWithBLOBs zmsyComplaint) {
         return zmsyComplaintMapper.insert(zmsyComplaint);
     }
 }

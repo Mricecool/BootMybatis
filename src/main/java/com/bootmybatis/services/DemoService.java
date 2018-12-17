@@ -1,6 +1,7 @@
 package com.bootmybatis.services;
 
 import com.bootmybatis.model.ZmsyComplaint;
+import com.bootmybatis.model.ZmsyComplaintWithBLOBs;
 
 import java.io.IOException;
 
@@ -9,8 +10,8 @@ import java.io.IOException;
  */
 public interface DemoService {
 
-    public int addInfo(ZmsyComplaint zmsyComplaint) throws IOException;
+    public int addInfo(ZmsyComplaintWithBLOBs zmsyComplaint) throws IOException;
 
-    public int addInfoNormal(ZmsyComplaint zmsyComplaint);
+    public int addInfoNormal(ZmsyComplaintWithBLOBs zmsyComplaint);
 
 }

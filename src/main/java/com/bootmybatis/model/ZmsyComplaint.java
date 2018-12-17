@@ -3,38 +3,70 @@ package com.bootmybatis.model;
 import java.util.Date;
 
 public class ZmsyComplaint {
-    private Long complaintid;
+    private Integer complaintId;
+
+    private String username;
+
+    private String userphone;
+
+    private String userqq;
+
+    private String useremail;
 
     private Date complaintdate;
 
-    private String title;
-
-    private String content;
-
-    private String addfile;
-
-    private String name;
-
-    private String tel;
-
-    private String email;
-
-    private Integer complainttype;
+    private Integer centeruserId;
 
     private Integer status;
 
-    private Long adminuserid;
+    private Date operatedate;
 
-    private Date opdate;
+    private String complainttitle;
 
-    private String opdesc;
+    private Integer source;
 
-    public Long getComplaintid() {
-        return complaintid;
+    private Integer complaintType;
+
+    private Long complaintOrgId;
+
+    public Integer getComplaintId() {
+        return complaintId;
     }
 
-    public void setComplaintid(Long complaintid) {
-        this.complaintid = complaintid;
+    public void setComplaintId(Integer complaintId) {
+        this.complaintId = complaintId;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
+    }
+
+    public String getUserphone() {
+        return userphone;
+    }
+
+    public void setUserphone(String userphone) {
+        this.userphone = userphone == null ? null : userphone.trim();
+    }
+
+    public String getUserqq() {
+        return userqq;
+    }
+
+    public void setUserqq(String userqq) {
+        this.userqq = userqq == null ? null : userqq.trim();
+    }
+
+    public String getUseremail() {
+        return useremail;
+    }
+
+    public void setUseremail(String useremail) {
+        this.useremail = useremail == null ? null : useremail.trim();
     }
 
     public Date getComplaintdate() {
@@ -45,60 +77,12 @@ public class ZmsyComplaint {
         this.complaintdate = complaintdate;
     }
 
-    public String getTitle() {
-        return title;
+    public Integer getCenteruserId() {
+        return centeruserId;
     }
 
-    public void setTitle(String title) {
-        this.title = title == null ? null : title.trim();
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
-    }
-
-    public String getAddfile() {
-        return addfile;
-    }
-
-    public void setAddfile(String addfile) {
-        this.addfile = addfile == null ? null : addfile.trim();
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
-
-    public String getTel() {
-        return tel;
-    }
-
-    public void setTel(String tel) {
-        this.tel = tel == null ? null : tel.trim();
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
-    }
-
-    public Integer getComplainttype() {
-        return complainttype;
-    }
-
-    public void setComplainttype(Integer complainttype) {
-        this.complainttype = complainttype;
+    public void setCenteruserId(Integer centeruserId) {
+        this.centeruserId = centeruserId;
     }
 
     public Integer getStatus() {
@@ -109,27 +93,43 @@ public class ZmsyComplaint {
         this.status = status;
     }
 
-    public Long getAdminuserid() {
-        return adminuserid;
+    public Date getOperatedate() {
+        return operatedate;
     }
 
-    public void setAdminuserid(Long adminuserid) {
-        this.adminuserid = adminuserid;
+    public void setOperatedate(Date operatedate) {
+        this.operatedate = operatedate;
     }
 
-    public Date getOpdate() {
-        return opdate;
+    public String getComplainttitle() {
+        return complainttitle;
     }
 
-    public void setOpdate(Date opdate) {
-        this.opdate = opdate;
+    public void setComplainttitle(String complainttitle) {
+        this.complainttitle = complainttitle == null ? null : complainttitle.trim();
     }
 
-    public String getOpdesc() {
-        return opdesc;
+    public Integer getSource() {
+        return source;
     }
 
-    public void setOpdesc(String opdesc) {
-        this.opdesc = opdesc == null ? null : opdesc.trim();
+    public void setSource(Integer source) {
+        this.source = source;
+    }
+
+    public Integer getComplaintType() {
+        return complaintType;
+    }
+
+    public void setComplaintType(Integer complaintType) {
+        this.complaintType = complaintType;
+    }
+
+    public Long getComplaintOrgId() {
+        return complaintOrgId;
+    }
+
+    public void setComplaintOrgId(Long complaintOrgId) {
+        this.complaintOrgId = complaintOrgId;
     }
 }

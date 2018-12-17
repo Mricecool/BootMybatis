@@ -2,9 +2,10 @@ package com.bootmybatis.dao;
 
 import com.bootmybatis.model.ZmsyCenter;
 import com.bootmybatis.model.ZmsyCenterWithBLOBs;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+@Repository
 public interface ZmsyCenterMapper {
     int deleteByPrimaryKey(Integer centerId);
 
