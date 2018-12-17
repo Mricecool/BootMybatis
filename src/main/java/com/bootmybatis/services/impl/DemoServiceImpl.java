@@ -25,4 +25,10 @@ public class DemoServiceImpl implements DemoService {
         throw new IOException();
         //return res;
     }
+
+    @Transactional
+    @Override
+    public int addInfoNormal(ZmsyComplaint zmsyComplaint) {
+        return zmsyComplaintMapper.insert(zmsyComplaint);
+    }
 }

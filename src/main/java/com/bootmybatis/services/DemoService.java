@@ -11,4 +11,6 @@ public interface DemoService {
 
     public int addInfo(ZmsyComplaint zmsyComplaint) throws IOException;
 
+    public int addInfoNormal(ZmsyComplaint zmsyComplaint);
+
 }
