@@ -26,35 +26,35 @@ public class MainController {
     @Autowired
     private DemoService demoService;
 
-    @RequestMapping(value = "/hello",method = RequestMethod.GET)
+    @RequestMapping(value = "/hello", method = RequestMethod.GET)
     @ResponseBody
-    public String hello(){
+    public String hello() {
         return "Hello World";
     }
 
-    @RequestMapping(value = "/list",produces = "application/json;charset=utf-8",method = RequestMethod.GET)
+    @RequestMapping(value = "/list", produces = "application/json;charset=utf-8", method = RequestMethod.GET)
     @ResponseBody
-    public List<ZmsyCenter> list(){
+    public List<ZmsyCenter> list() {
         return zmsyCenterMapper.findAll();
     }
 
-    @RequestMapping(value = "/listByPid",produces = "application/xml;charset=utf-8",method = RequestMethod.GET)
+    @RequestMapping(value = "/listByPid", produces = "application/xml;charset=utf-8", method = RequestMethod.GET)
     @ResponseBody
-    public List<ZmsyCenter> listByPid(int parentId){
+    public List<ZmsyCenter> listByPid(int parentId) {
         return zmsyCenterMapper.selectByParentId(parentId);
     }
 
-    @RequestMapping(value = "/add",method = RequestMethod.GET)
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
     @ResponseBody
     public String add() throws IOException {
-        ZmsyComplaint zmsyComplaint=new ZmsyComplaint();
+        ZmsyComplaint zmsyComplaint = new ZmsyComplaint();
         zmsyComplaint.setComplaintdate(new Date(System.currentTimeMillis()));
         zmsyComplaint.setContent("测试boot事务");
         zmsyComplaint.setTitle("测试事务支持");
         zmsyComplaint.setComplainttype(1);
-        zmsyComplaint.setName("666--"+System.currentTimeMillis());
-        int res=demoService.addInfo(zmsyComplaint);
-        if(res>0){
+        zmsyComplaint.setName("666--" + System.currentTimeMillis());
+        int res = demoService.addInfo(zmsyComplaint);
+        if (res > 0) {
             return "success";
         }
         return "error";
