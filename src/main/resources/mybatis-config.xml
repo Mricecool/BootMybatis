@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <!--<setting name="mapUnderscoreToCamelCase" value="true"></setting>-->
+        <!--全局映射器启用或禁用缓存-->
+        <setting name="cacheEnabled" value="true"></setting>
+        <!--全局启用或禁用延迟加载，禁用时，所有关联对象即时加载-->
+        <!--<setting name="lazyLoadingEnabled" value="true"></setting>-->
+        <!--层级加载（如果级联关系上使用fetchType属性会覆盖全局的延时加载和层级加载配置）-->
+        <!--<setting name="aggressiveLazyLoading" value="false"></setting>-->
+    </settings>
+</configuration>
