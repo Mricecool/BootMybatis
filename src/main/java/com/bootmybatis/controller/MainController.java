@@ -1,9 +1,7 @@
 package com.bootmybatis.controller;
 
 import com.bootmybatis.dao.ZmsyCenterMapper;
-import com.bootmybatis.model.ZmsyCenter;
-import com.bootmybatis.model.ZmsyComplaint;
-import com.bootmybatis.model.ZmsyComplaintWithBLOBs;
+import com.bootmybatis.model.*;
 import com.bootmybatis.services.CacheService;
 import com.bootmybatis.services.DemoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -78,8 +77,8 @@ public class MainController {
     public String addCache() {
         ZmsyComplaintWithBLOBs zmsyComplaint = new ZmsyComplaintWithBLOBs();
         zmsyComplaint.setComplaintdate(new Date(System.currentTimeMillis()));
-        zmsyComplaint.setComplaintcontent("测试Cache"+ System.currentTimeMillis());
-        zmsyComplaint.setComplainttitle("测试Cache支持"+ System.currentTimeMillis());
+        zmsyComplaint.setComplaintcontent("测试Cache" + System.currentTimeMillis());
+        zmsyComplaint.setComplainttitle("测试Cache支持" + System.currentTimeMillis());
         zmsyComplaint.setComplaintType(1);
         zmsyComplaint.setUsername("666--" + System.currentTimeMillis());
         int res = cacheService.saveBean(zmsyComplaint);
@@ -88,4 +87,43 @@ public class MainController {
         }
         return "error";
     }
+
+    @RequestMapping(value = "/listMongo", produces = "application/json;charset=utf-8", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Person> listMongo() {
+        return demoService.getMongoList();
+    }
+
+    @RequestMapping(value = "/mongo", produces = "application/json;charset=utf-8", method = RequestMethod.GET)
+    @ResponseBody
+    public Person mongo(String pName) {
+        return demoService.getPerson(pName);
+    }
+
+    @RequestMapping(value = "/addMongo", method = RequestMethod.GET)
+    @ResponseBody
+    public String addMongo() {
+        List<Card> cards = new ArrayList<>();
+        Card card = new Card();
+        card.setCardName("中信银行信用卡");
+        card.setCardNo("6632 2334 2345 6654");
+        cards.add(card);
+        card = new Card();
+        card.setCardName("浦发银行信用卡");
+        card.setCardNo("6111 2776 2990 5564");
+        cards.add(card);
+
+        Person person = new Person();
+        person.setpId((int) System.currentTimeMillis());
+        person.setpName("人员");
+        person.setCards(cards);
+
+
+        Person p = demoService.addMongo(person);
+        if (p != null) {
+            return "success";
+        }
+        return "error";
+    }
+
 }

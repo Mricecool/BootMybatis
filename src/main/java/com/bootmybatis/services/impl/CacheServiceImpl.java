@@ -17,12 +17,21 @@ public class CacheServiceImpl implements CacheService{
     @Autowired
     private ZmsyComplaintMapper zmsyComplaintMapper;
 
+    /**
+     * 缓存列表
+     * @return
+     */
     @Cacheable(value = "coList",key = "#root.methodName")
     @Override
     public List<ZmsyComplaintWithBLOBs> getCacheList() {
         return zmsyComplaintMapper.findAll();
     }
 
+    /**
+     * 添加后清除缓存
+     * @param zmsyComplaint
+     * @return
+     */
     @CacheEvict(value = "coList",allEntries = true)
     @Override
     public int saveBean(ZmsyComplaintWithBLOBs zmsyComplaint) {
