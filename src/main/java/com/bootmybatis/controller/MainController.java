@@ -1,5 +1,6 @@
 package com.bootmybatis.controller;
 
+import com.bootmybatis.dao.RedisDao;
 import com.bootmybatis.dao.ZmsyCenterMapper;
 import com.bootmybatis.model.*;
 import com.bootmybatis.services.CacheService;
@@ -29,6 +30,9 @@ public class MainController {
 
     @Autowired
     private CacheService cacheService;
+
+    @Autowired
+    private RedisDao redisDao;
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     @ResponseBody
@@ -118,12 +122,40 @@ public class MainController {
         person.setpName("人员");
         person.setCards(cards);
 
-
         Person p = demoService.addMongo(person);
         if (p != null) {
             return "success";
         }
         return "error";
+    }
+
+    @RequestMapping(value = "/getRedisStr", method = RequestMethod.GET)
+    @ResponseBody
+    public String getRedisStr(String key) {
+        return redisDao.getString(key);
+    }
+
+    @RequestMapping(value = "/setRedisStr",  method = RequestMethod.GET)
+    @ResponseBody
+    public String setRedisStr(String key, String value) {
+        redisDao.setString(key, value);
+        return "success";
+    }
+
+    @RequestMapping(value = "/getRedis", produces = "application/json;charset=utf-8",method = RequestMethod.GET)
+    @ResponseBody
+    public Object getRedis(String key) {
+        return redisDao.getObj(key);
+    }
+
+    @RequestMapping(value = "/setRedis",  method = RequestMethod.GET)
+    @ResponseBody
+    public String setRedis() {
+        RedisBean redisBean=new RedisBean();
+        redisBean.setBeanId("666");
+        redisBean.setBeanName("redis");
+        redisDao.setObj(redisBean.getBeanId(), redisBean);
+        return "success";
     }
 
 }

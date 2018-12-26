@@ -1,8 +1,12 @@
 package com.bootmybatis.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ZmsyComplaint {
+public class ZmsyComplaint implements Serializable{
+
+    private static final long serialVersionUID = -1164492971520375606L;
+
     private Integer complaintId;
 
     private String username;
