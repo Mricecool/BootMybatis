@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class JmsReceiver {
 
-    @JmsListener(destination = "dest")
+/*    @JmsListener(destination = "dest")
     public void recevierMsg(String msg) {
         System.out.println("接收到消息：" + msg);
-    }
+    }*/
 
 }
